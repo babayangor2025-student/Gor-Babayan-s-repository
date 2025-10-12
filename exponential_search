@@ -1,0 +1,36 @@
+arr = [2, 4, 6, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+def binary_search(arr, left, right, target):
+    while left <= right:
+        mid = left + (right - left) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+def exponential_search(arr, target):
+    if arr[0] == target:
+        return 0
+
+    n = len(arr)
+    i = 1
+
+    # Գտնում ենք միջակայքը որտեղ կարող է լինել target-ը
+    while i < n and arr[i] <= target:
+        i *= 2
+
+    # Կատարում ենք binary search տվյալ միջակայքում
+    return binary_search(arr, i // 2, min(i, n - 1), target)
+
+arr = [2, 4, 6, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+target = 35
+
+index = exponential_search(arr, target)
+
+if index != -1:
+    print(f"Տարրը գտնվել է {index} ինդեքսով")
+else:
+    print("Տարրը չի գտնվել զանգվածում")
