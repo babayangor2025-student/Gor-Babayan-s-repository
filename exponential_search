@@ -18,11 +18,11 @@ def exponential_search(arr, target):
     n = len(arr)
     i = 1
 
-    # Գտնում ենք միջակայքը որտեղ կարող է լինել target-ը
+   
     while i < n and arr[i] <= target:
         i *= 2
 
-    # Կատարում ենք binary search տվյալ միջակայքում
+    
     return binary_search(arr, i // 2, min(i, n - 1), target)
 
 arr = [2, 4, 6, 10, 15, 20, 25, 30, 35, 40, 45, 50]
