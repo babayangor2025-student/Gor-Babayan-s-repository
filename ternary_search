@@ -1,0 +1,17 @@
+def ternary_search(f, left, right, absolute_precision=1e-6):
+    while right - left > absolute_precision:
+        mid1 = left + (right - left) / 3
+        mid2 = right - (right - left) / 3
+
+        if f(mid1) < f(mid2):
+            left = mid1
+        else:
+            right = mid2
+
+    return (left + right) / 2  
+def f(x):
+    return -(x - 3)**2 + 9
+
+maximum_x = ternary_search(f, 0, 6)
+print("Maximum at x =", maximum_x)
+print("Maximum value =", f(maximum_x))
